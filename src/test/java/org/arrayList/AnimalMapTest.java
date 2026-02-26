@@ -12,4 +12,12 @@ public class AnimalMapTest {
 
         assertThat(animalMap.getAnimals()).containsKey("Dog");
     }
+
+    @Test
+    void should_throw_exception_when_accessing_invalid_ability() {
+        Animal animal = new Animal("Dog");
+
+        assertThatThrownBy(() -> animal.getAbility(4))
+                .isInstanceOf(ArrayIndexOutOfBoundsException.class);
+    }
 }
