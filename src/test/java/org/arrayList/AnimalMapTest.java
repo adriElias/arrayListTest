@@ -1,6 +1,9 @@
 package org.arrayList;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class AnimalMapTest {
@@ -19,5 +22,20 @@ public class AnimalMapTest {
 
         assertThatThrownBy(() -> animal.getAbility(4))
                 .isInstanceOf(ArrayIndexOutOfBoundsException.class);
+    }
+
+    @Test
+    void should_verify_optional_is_empty() {
+        Optional<Animal> empty = Optional.empty();
+
+        assertThat(empty).isEmpty();
+    }
+
+    @Test
+    void should_verify_optional_animal_is_present() {
+        Optional<Animal> animal = Optional.of(new Animal("Dog"));
+
+        assertThat(animal).isPresent();
+        assertThat(animal).contains(new Animal("Dog"));
     }
 }
